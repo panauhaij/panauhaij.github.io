@@ -1,6 +1,12 @@
 {
-    "title":"Blog Title",
-    "subTitle":"Blog description",
-    "avatarUrl":"https://github.githubassets.com/favicons/favicon.svg",
-    "GMEEK_VERSION":"last"
+    "title":"Pan's Blog",
+    "subTitle":"秉忠贞之志 守谦退之节",
+    "avatarUrl":"https://avatars.githubusercontent.com/u/150444021?v=4",
+    "GMEEK_VERSION":"last",
+    "email":"pan18176793056@gmail.com",
+    "homeUrl":"https://blog.auhaijpan.top/",
+    "startSite":"07/07/2024",
+    "UTC":8,
+    "bottomText":"🚀纵使困顿难行，亦当砥砺奋进🚀",
+    "singlePage":["about"]
 }

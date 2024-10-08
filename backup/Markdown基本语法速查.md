@@ -1,5 +1,9 @@
 ## Markdown语法
 Markdown是一种轻量级标记语言，由约翰·格鲁伯（John Gruber）于2004年创建，其优点包括简洁易读、易于学习、可转换性强、便于协作以及可扩展性，如今已成为世界上最受欢迎的标记语言之一。
+
+## 扩展语法速查
+[Markdown扩展语法速查](https://blog.auhaijpan.top/post/Markdown-kuo-zhan-yu-fa-su-cha.html)
+
 # 标题
 使用 `#` 表示标题，数量表示标题级别；例如：
 ```

@@ -1,5 +1,11 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>Pan's Blog</title><link>https://blog.auhaijpan.top/</link><description>秉忠贞之志 守谦退之节</description><copyright>Pan's Blog</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://avatars.githubusercontent.com/u/150444021?v=4</url><title>avatar</title><link>https://blog.auhaijpan.top/</link></image><lastBuildDate>Tue, 08 Oct 2024 11:15:20 +0000</lastBuildDate><managingEditor>Pan's Blog</managingEditor><ttl>60</ttl><webMaster>Pan's Blog</webMaster><item><title>Markdown扩展语法速查</title><link>https://blog.auhaijpan.top//post/Markdown-kuo-zhan-yu-fa-su-cha.html</link><description>## 前言&#13;
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>Pan's Blog</title><link>https://blog.auhaijpan.top/</link><description>秉忠贞之志 守谦退之节</description><copyright>Pan's Blog</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://avatars.githubusercontent.com/u/150444021?v=4</url><title>avatar</title><link>https://blog.auhaijpan.top/</link></image><lastBuildDate>Wed, 09 Oct 2024 08:50:36 +0000</lastBuildDate><managingEditor>Pan's Blog</managingEditor><ttl>60</ttl><webMaster>Pan's Blog</webMaster><item><title>智猪博弈与纳什均衡</title><link>https://blog.auhaijpan.top//post/zhi-zhu-bo-yi-yu-na-shen-jun-heng.html</link><description>## 前言&#13;
+&#13;
+[囚徒困境与纳什均衡](https://blog.auhaijpan.top/post/qiu-tu-kun-jing-yu-na-shen-jun-heng.html)&#13;
+&#13;
+# 智猪博弈&#13;
+&#13;
+“智猪博弈”由约翰·纳什（John F Nash）于1950年提出，用来说明**纳什均衡**。</description><guid isPermaLink="true">https://blog.auhaijpan.top//post/zhi-zhu-bo-yi-yu-na-shen-jun-heng.html</guid><pubDate>Wed, 09 Oct 2024 08:50:12 +0000</pubDate></item><item><title>Markdown扩展语法速查</title><link>https://blog.auhaijpan.top//post/Markdown-kuo-zhan-yu-fa-su-cha.html</link><description>## 前言&#13;
 [Markdown基本语法速查](https://blog.auhaijpan.top/post/Markdown-ji-ben-yu-fa-su-cha.html)&#13;
 &#13;
 # 表格&#13;

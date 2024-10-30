@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html data-color-mode="light" data-dark-theme="dark" data-light-theme="light" lang="zh-CN">
+<head>
+    <meta content="text/html; charset=utf-8" http-equiv="content-type" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link href='https://mirrors.sustech.edu.cn/cdnjs/ajax/libs/Primer/21.0.7/primer.css' rel='stylesheet' />
+    
+    <link rel="icon" href="https://avatars.githubusercontent.com/u/150444021?v=4"><script>
+        let theme = localStorage.getItem("meek_theme") || "light";
+        document.documentElement.setAttribute("data-color-mode", theme);
+    </script>
+<meta name="description" content="最近搞了一些有意思的小项目，想着部署到网上方便访问，但是又不好放到自己的个人网站上，这时候就可以用Cloudflare Pages来进行部署。">
+<meta property="og:title" content="用Cloudflare Pages部署静态站点">
+<meta property="og:description" content="最近搞了一些有意思的小项目，想着部署到网上方便访问，但是又不好放到自己的个人网站上，这时候就可以用Cloudflare Pages来进行部署。">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://blog.auhaijpan.top//post/yong-Cloudflare%20Pages-bu-shu-jing-tai-zhan-dian.html">
+<meta property="og:image" content="https://avatars.githubusercontent.com/u/150444021?v=4">
+<title>用Cloudflare Pages部署静态站点</title>
+
+
+
+</head>
+<style>
+body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;padding: 45px;font-size: 16px;font-family: sans-serif;line-height: 1.25;}
+#header{display:flex;padding-bottom:8px;border-bottom: 1px solid var(--borderColor-muted, var(--color-border-muted));margin-bottom: 16px;}
+#footer {margin-top:64px; text-align: center;font-size: small;}
+
+</style>
+
+<style>
+.postTitle{margin: auto 0;font-size:40px;font-weight:bold;}
+.title-right{display:flex;margin:auto 0 0 auto;}
+.title-right .circle{padding: 14px 16px;margin-right:8px;}
+#postBody{border-bottom: 1px solid var(--color-border-default);padding-bottom:36px;}
+#postBody hr{height:2px;}
+#cmButton{height:48px;margin-top:48px;}
+#comments{margin-top:64px;}
+.g-emoji{font-size:24px;}
+@media (max-width: 600px) {
+    body {padding: 8px;}
+    .postTitle{font-size:24px;}
+}
+
+</style>
+
+
+
+
+<body>
+    <div id="header">
+<h1 class="postTitle">用Cloudflare Pages部署静态站点</h1>
+<div class="title-right">
+    <a href="https://blog.auhaijpan.top/" id="buttonHome" class="btn btn-invisible circle" title="首页">
+        <svg class="octicon" width="16" height="16">
+            <path id="pathHome" fill-rule="evenodd"></path>
+        </svg>
+    </a>
+    
+    <a href="https://github.com/panauhaij/panauhaij.github.io/issues/7" target="_blank" class="btn btn-invisible circle" title="Issue">
+        <svg class="octicon" width="16" height="16">
+            <path id="pathIssue" fill-rule="evenodd"></path>
+        </svg>
+    </a>
+    
+
+    <a class="btn btn-invisible circle" onclick="modeSwitch();" title="切换主题">
+        <svg class="octicon" width="16" height="16" >
+            <path id="themeSwitch" fill-rule="evenodd"></path>
+        </svg>
+    </a>
+
+</div>
+</div>
+    <div id="content">
+<div class="markdown-body" id="postBody"><p>最近搞了一些有意思的小项目，想着部署到网上方便访问，但是又不好放到自己的个人网站上，这时候就可以用Cloudflare Pages来进行部署。</p>
+<h2><strong>Cloudflare Pages</strong></h2>
+<p>Cloudflare Pages 是一个专为构建和部署静态网站而设计的平台。它与 GitHub 集成，可以直接从代码库拉取项目。借助 Cloudflare 的全球 <del>（环大陆）</del> CDN 网络，能够实现快速的全球内容加载。不仅如此，Cloudflare Pages 还支持自定义域名和自动 SSL 证书，方便我们快速和安全地访问。</p>
+<p>简单讲就是我们可以利用CF Pages来快速部署自己的静态站点（比如个人的静态主页）和项目，省去了自费购买服务器等操作。 <del>（主打一个免费白嫖）</del></p>
+<h2><strong>准备</strong></h2>
+<ul>
+<li>需要部署的项目文件</li>
+<li>域名（可选）</li>
+<li>Cloudflare账号</li>
+</ul>
+<h1><strong>部署项目</strong></h1>
+<h2><strong>登录官网</strong></h2>
+<p>首先登录<a href="https://www.cloudflare-cn.com/enterprise/" rel="nofollow">Cloudflare官网</a>，没有账号的可以自行注册一个，应该不用教学了吧。</p>
+<h2><strong>创建Pages项目</strong></h2>
+<p>注册登录之后会自动跳转到后台，点击左边列表的 <strong>Workers和Pages</strong>，点击 <strong>创建</strong>。</p>
+<p><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/472e47ab02eddf4be0c535ad4805604cbf0e17c620f063b3061a247bcbddd094/68747470733a2f2f63646e2e61756861696a70616e2e746f702f77702d636f6e74656e742f75706c6f6164732f323032342f31302f63662d70616765732e706e67"><img src="https://camo.githubusercontent.com/472e47ab02eddf4be0c535ad4805604cbf0e17c620f063b3061a247bcbddd094/68747470733a2f2f63646e2e61756861696a70616e2e746f702f77702d636f6e74656e742f75706c6f6164732f323032342f31302f63662d70616765732e706e67" alt="cf-pages" data-canonical-src="https://cdn.auhaijpan.top/wp-content/uploads/2024/10/cf-pages.png" style="max-width: 100%;"></a></p>
+<h2><strong>上传方式</strong></h2>
+<p>然后切换到<strong>Pages</strong>页面，其提供了两种上传方式，分别是通过<strong>Git 存储库直接导入</strong>和<strong>本地上传</strong>，这里我们选择<strong>本地上传</strong>。</p>
+<p><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/0ec927792da44e993cd1495221a70d4b8ee6783e88231a31465590e7390ea019/68747470733a2f2f63646e2e61756861696a70616e2e746f702f77702d636f6e74656e742f75706c6f6164732f323032342f31302f2545342542382541342545372541372538442545392538332541382545372542442542322545362539362542392545352542432538462e706e67"><img src="https://camo.githubusercontent.com/0ec927792da44e993cd1495221a70d4b8ee6783e88231a31465590e7390ea019/68747470733a2f2f63646e2e61756861696a70616e2e746f702f77702d636f6e74656e742f75706c6f6164732f323032342f31302f2545342542382541342545372541372538442545392538332541382545372542442542322545362539362542392545352542432538462e706e67" alt="两种部署方式" data-canonical-src="https://cdn.auhaijpan.top/wp-content/uploads/2024/10/%E4%B8%A4%E7%A7%8D%E9%83%A8%E7%BD%B2%E6%96%B9%E5%BC%8F.png" style="max-width: 100%;"></a></p>
+<h2><strong>项目名称</strong></h2>
+<p>选择本地上传之后，先给项目<strong>创建一个名称</strong>，我这里填了<strong>demo</strong>。</p>
+<p><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/51cd0ec738a258e18bb5944ed1e5943858e3d3eba1824bce50214128fea9a1e6/68747470733a2f2f63646e2e61756861696a70616e2e746f702f77702d636f6e74656e742f75706c6f6164732f323032342f31302f2545392541312542392545372539422541452545352539302538442545372541372542302e706e67"><img src="https://camo.githubusercontent.com/51cd0ec738a258e18bb5944ed1e5943858e3d3eba1824bce50214128fea9a1e6/68747470733a2f2f63646e2e61756861696a70616e2e746f702f77702d636f6e74656e742f75706c6f6164732f323032342f31302f2545392541312542392545372539422541452545352539302538442545372541372542302e706e67" alt="项目名称" data-canonical-src="https://cdn.auhaijpan.top/wp-content/uploads/2024/10/%E9%A1%B9%E7%9B%AE%E5%90%8D%E7%A7%B0.png" style="max-width: 100%;"></a></p>
+<h2><strong>上传文件</strong></h2>
+<p>然后<strong>上传文件</strong>。（注意每个文件的最大限制是25MB）</p>
+<h2><strong>部署项目</strong></h2>
+<p>等待上传完毕之后就点击<strong>部署站点</strong>，然后你的站点就成功上线了，可以通过其<strong>分发的链接</strong>前往自己的站点查看。</p>
+<p><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/d6150bcb25ec6b9e3d6ad501b5a10b582514feed5f03a4073b37c7e39192f97e/68747470733a2f2f63646e2e61756861696a70616e2e746f702f77702d636f6e74656e742f75706c6f6164732f323032342f31302f2545342542382538412545342542432541302545372541422539392545372538322542392545362539362538372545342542422542362e706e67"><img src="https://camo.githubusercontent.com/d6150bcb25ec6b9e3d6ad501b5a10b582514feed5f03a4073b37c7e39192f97e/68747470733a2f2f63646e2e61756861696a70616e2e746f702f77702d636f6e74656e742f75706c6f6164732f323032342f31302f2545342542382538412545342542432541302545372541422539392545372538322542392545362539362538372545342542422542362e706e67" alt="上传站点文件" data-canonical-src="https://cdn.auhaijpan.top/wp-content/uploads/2024/10/%E4%B8%8A%E4%BC%A0%E7%AB%99%E7%82%B9%E6%96%87%E4%BB%B6.png" style="max-width: 100%;"></a></p>
+<h2><strong>成功部署</strong></h2>
+<p>笔者部署的官方演示站点：<a href="https://demo-97x.pages.dev/" rel="nofollow">Direct Upload Demo | Cloudflare Pages</a></p>
+<p><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/40785befc7da36be754047d6e331a23b1bfbda1e8c8c5fcb50cc05fcc9e82c6c/68747470733a2f2f63646e2e61756861696a70616e2e746f702f77702d636f6e74656e742f75706c6f6164732f323032342f31302f64656d6f2d706167652e706e67"><img src="https://camo.githubusercontent.com/40785befc7da36be754047d6e331a23b1bfbda1e8c8c5fcb50cc05fcc9e82c6c/68747470733a2f2f63646e2e61756861696a70616e2e746f702f77702d636f6e74656e742f75706c6f6164732f323032342f31302f64656d6f2d706167652e706e67" alt="demo-page" data-canonical-src="https://cdn.auhaijpan.top/wp-content/uploads/2024/10/demo-page.png" style="max-width: 100%;"></a></p>
+<h2><strong>自定义域</strong></h2>
+<p>如果你有自己的域名的话，还可以自行设置<strong>自定义域</strong>，通过自己的域名来访问部署好的站点。<br>
+笔者的自定义域名访问：<a href="https://demo.77889925.xyz/" rel="nofollow">Direct Upload Demo | Cloudflare Pages</a></p>
+<p><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/79a5b0ec8629f7b3b36d8b5d7991fba34ba2d9d394af9cf441f569f9785aced5/68747470733a2f2f63646e2e61756861696a70616e2e746f702f77702d636f6e74656e742f75706c6f6164732f323032342f31302f2545382538372541412545352541452539412545342542392538392545352539462539462e706e67"><img src="https://camo.githubusercontent.com/79a5b0ec8629f7b3b36d8b5d7991fba34ba2d9d394af9cf441f569f9785aced5/68747470733a2f2f63646e2e61756861696a70616e2e746f702f77702d636f6e74656e742f75706c6f6164732f323032342f31302f2545382538372541412545352541452539412545342542392538392545352539462539462e706e67" alt="自定义域" data-canonical-src="https://cdn.auhaijpan.top/wp-content/uploads/2024/10/%E8%87%AA%E5%AE%9A%E4%B9%89%E5%9F%9F.png" style="max-width: 100%;"></a></p>
+<br>
+<br>
+<h4>相关文档：</h4>
+<ul>
+<li><a href="https://developers.cloudflare.com/pages/" rel="nofollow">Cloudflare Pages documentation</a></li>
+<li><a href="https://www.cloudflare-cn.com/enterprise/" rel="nofollow">全球云平台 | Cloudflare 中国官网 | Cloudflare</a></li>
+</ul></div>
+<div style="font-size:small;margin-top:8px;float:right;">🚀纵使困顿难行，亦当砥砺奋进🚀</div>
+
+<button class="btn btn-block" type="button" onclick="openComments()" id="cmButton">评论</button>
+<div class="comments" id="comments"></div>
+
+</div>
+    <div id="footer"><div id="footer1">Copyright © <span id="copyrightYear"></span> <a href="https://blog.auhaijpan.top/">Pan's Blog</a></div>
+<div id="footer2">
+    <span id="runday"></span><span>Powered by <a href="https://meekdai.com/Gmeek.html" target="_blank">Gmeek</a></span>
+</div>
+
+<script>
+var now=new Date();
+document.getElementById("copyrightYear").innerHTML=now.getFullYear();
+
+if("07/07/2024"!=""){
+    var startSite=new Date("07/07/2024");
+    var diff=now.getTime()-startSite.getTime();
+    var diffDay=Math.floor(diff/(1000*60*60*24));
+    document.getElementById("runday").innerHTML="网站运行"+diffDay+"天"+" • ";
+}
+</script></div>
+</body>
+<script>
+var IconList={'sun': 'M8 10.5a2.5 2.5 0 100-5 2.5 2.5 0 000 5zM8 12a4 4 0 100-8 4 4 0 000 8zM8 0a.75.75 0 01.75.75v1.5a.75.75 0 01-1.5 0V.75A.75.75 0 018 0zm0 13a.75.75 0 01.75.75v1.5a.75.75 0 01-1.5 0v-1.5A.75.75 0 018 13zM2.343 2.343a.75.75 0 011.061 0l1.06 1.061a.75.75 0 01-1.06 1.06l-1.06-1.06a.75.75 0 010-1.06zm9.193 9.193a.75.75 0 011.06 0l1.061 1.06a.75.75 0 01-1.06 1.061l-1.061-1.06a.75.75 0 010-1.061zM16 8a.75.75 0 01-.75.75h-1.5a.75.75 0 010-1.5h1.5A.75.75 0 0116 8zM3 8a.75.75 0 01-.75.75H.75a.75.75 0 010-1.5h1.5A.75.75 0 013 8zm10.657-5.657a.75.75 0 010 1.061l-1.061 1.06a.75.75 0 11-1.06-1.06l1.06-1.06a.75.75 0 011.06 0zm-9.193 9.193a.75.75 0 010 1.06l-1.06 1.061a.75.75 0 11-1.061-1.06l1.06-1.061a.75.75 0 011.061 0z', 'moon': 'M9.598 1.591a.75.75 0 01.785-.175 7 7 0 11-8.967 8.967.75.75 0 01.961-.96 5.5 5.5 0 007.046-7.046.75.75 0 01.175-.786zm1.616 1.945a7 7 0 01-7.678 7.678 5.5 5.5 0 107.678-7.678z', 'sync': 'M1.705 8.005a.75.75 0 0 1 .834.656 5.5 5.5 0 0 0 9.592 2.97l-1.204-1.204a.25.25 0 0 1 .177-.427h3.646a.25.25 0 0 1 .25.25v3.646a.25.25 0 0 1-.427.177l-1.38-1.38A7.002 7.002 0 0 1 1.05 8.84a.75.75 0 0 1 .656-.834ZM8 2.5a5.487 5.487 0 0 0-4.131 1.869l1.204 1.204A.25.25 0 0 1 4.896 6H1.25A.25.25 0 0 1 1 5.75V2.104a.25.25 0 0 1 .427-.177l1.38 1.38A7.002 7.002 0 0 1 14.95 7.16a.75.75 0 0 1-1.49.178A5.5 5.5 0 0 0 8 2.5Z', 'home': 'M6.906.664a1.749 1.749 0 0 1 2.187 0l5.25 4.2c.415.332.657.835.657 1.367v7.019A1.75 1.75 0 0 1 13.25 15h-3.5a.75.75 0 0 1-.75-.75V9H7v5.25a.75.75 0 0 1-.75.75h-3.5A1.75 1.75 0 0 1 1 13.25V6.23c0-.531.242-1.034.657-1.366l5.25-4.2Zm1.25 1.171a.25.25 0 0 0-.312 0l-5.25 4.2a.25.25 0 0 0-.094.196v7.019c0 .138.112.25.25.25H5.5V8.25a.75.75 0 0 1 .75-.75h3.5a.75.75 0 0 1 .75.75v5.25h2.75a.25.25 0 0 0 .25-.25V6.23a.25.25 0 0 0-.094-.195Z', 'github': 'M8 0c4.42 0 8 3.58 8 8a8.013 8.013 0 0 1-5.45 7.59c-.4.08-.55-.17-.55-.38 0-.27.01-1.13.01-2.2 0-.75-.25-1.23-.54-1.48 1.78-.2 3.65-.88 3.65-3.95 0-.88-.31-1.59-.82-2.15.08-.2.36-1.02-.08-2.12 0 0-.67-.22-2.2.82-.64-.18-1.32-.27-2-.27-.68 0-1.36.09-2 .27-1.53-1.03-2.2-.82-2.2-.82-.44 1.1-.16 1.92-.08 2.12-.51.56-.82 1.28-.82 2.15 0 3.06 1.86 3.75 3.64 3.95-.23.2-.44.55-.51 1.07-.46.21-1.61.55-2.33-.66-.15-.24-.6-.83-1.23-.82-.67.01-.27.38.01.53.34.19.73.9.82 1.13.16.45.68 1.31 2.69.94 0 .67.01 1.3.01 1.49 0 .21-.15.45-.55.38A7.995 7.995 0 0 1 0 8c0-4.42 3.58-8 8-8Z'};
+var utterancesLoad=0;
+
+let themeSettings={
+    "dark": ["dark","moon","#00f0ff","dark-blue"],
+    "light": ["light","sun","#ff5000","github-light"],
+    "auto": ["auto","sync","","preferred-color-scheme"]
+};
+function changeTheme(mode, icon, color, utheme){
+    document.documentElement.setAttribute("data-color-mode",mode);
+    document.getElementById("themeSwitch").setAttribute("d",value=IconList[icon]);
+    document.getElementById("themeSwitch").parentNode.style.color=color;
+    if(utterancesLoad==1){utterancesTheme(utheme);}
+}
+function modeSwitch(){
+    let currentMode=document.documentElement.getAttribute('data-color-mode');
+    let newMode = currentMode === "light" ? "dark" : currentMode === "dark" ? "auto" : "light";
+    localStorage.setItem("meek_theme", newMode);
+    if(themeSettings[newMode]){
+        changeTheme(...themeSettings[newMode]);
+    }
+}
+function utterancesTheme(theme){
+    const message={type:'set-theme',theme: theme};
+    const iframe=document.getElementsByClassName('utterances-frame')[0];
+    iframe.contentWindow.postMessage(message,'https://utteranc.es');
+}
+if(themeSettings[theme]){changeTheme(...themeSettings[theme]);}
+console.log("\n %c Gmeek last https://github.com/Meekdai/Gmeek \n","padding:5px 0;background:#02d81d;color:#fff");
+</script>
+
+<script>
+document.getElementById("pathHome").setAttribute("d",IconList["home"]);
+document.getElementById("pathIssue").setAttribute("d",IconList["github"]);
+
+
+
+function openComments(){
+    cm=document.getElementById("comments");
+    cmButton=document.getElementById("cmButton");
+    cmButton.innerHTML="loading";
+    span=document.createElement("span");
+    span.setAttribute("class","AnimatedEllipsis");
+    cmButton.appendChild(span);
+
+    script=document.createElement("script");
+    script.setAttribute("src","https://utteranc.es/client.js");
+    script.setAttribute("repo","panauhaij/panauhaij.github.io");
+    script.setAttribute("issue-term","title");
+    
+    if(localStorage.getItem("meek_theme")=="dark"){script.setAttribute("theme","dark-blue");}
+    else if(localStorage.getItem("meek_theme")=="light") {script.setAttribute("theme","github-light");}
+    else{script.setAttribute("theme","preferred-color-scheme");}
+    
+    script.setAttribute("crossorigin","anonymous");
+    script.setAttribute("async","");
+    cm.appendChild(script);
+
+    int=self.setInterval("iFrameLoading()",200);
+}
+
+function iFrameLoading(){
+    var utterances=document.getElementsByClassName('utterances');
+    if(utterances.length==1){
+        if(utterances[0].style.height!=""){
+            utterancesLoad=1;
+            int=window.clearInterval(int);
+            document.getElementById("cmButton").style.display="none";
+            console.log("utterances Load OK");
+        }
+    }
+}
+
+
+
+</script>
+
+
+</html>

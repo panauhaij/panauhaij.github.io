@@ -39,11 +39,14 @@ Cloudflare Pages 是一个专为构建和部署静态网站而设计的平台。
 
 然后**上传文件**。（注意每个文件的最大限制是25MB）
 
+![上传站点文件](https://cdn.auhaijpan.top/wp-content/uploads/2024/10/上传站点文件.png)
+
 ## **部署项目**
 
 等待上传完毕之后就点击**部署站点**，然后你的站点就成功上线了，可以通过其**分发的链接**前往自己的站点查看。
 
-![上传站点文件](https://cdn.auhaijpan.top/wp-content/uploads/2024/10/上传站点文件.png)
+![成功部署](https://cdn.auhaijpan.top/wp-content/uploads/2024/10/成功部署.png)
+
 
 ## **成功部署**
 

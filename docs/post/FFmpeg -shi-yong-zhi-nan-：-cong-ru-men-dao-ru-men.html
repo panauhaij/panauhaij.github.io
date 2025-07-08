@@ -10,22 +10,24 @@
         let theme = localStorage.getItem("meek_theme") || "light";
         document.documentElement.setAttribute("data-color-mode", theme);
     </script>
-<meta name="description" content="## 前言
-[Markdown基本语法速查](https://blog.auhaijpan.top/post/Markdown-ji-ben-yu-fa-su-cha.html)
+<meta name="description" content="## 引言
+### 什么是FFmpeg？为什么要选FFmpeg？
 
-# 表格
-表格分为表头，分隔行和表体。">
-<meta property="og:title" content="Markdown扩展语法速查">
-<meta property="og:description" content="## 前言
-[Markdown基本语法速查](https://blog.auhaijpan.top/post/Markdown-ji-ben-yu-fa-su-cha.html)
+[FFmpeg官网](https://ffmpeg.org/)介绍说：“A complete, cross-platform solution to record, convert and stream audio and video.”
 
-# 表格
-表格分为表头，分隔行和表体。">
+即“一套完整的跨平台解决方案，用于录制、转换和流式传输音频和视频。">
+<meta property="og:title" content="FFmpeg 使用指南：从入门到入门">
+<meta property="og:description" content="## 引言
+### 什么是FFmpeg？为什么要选FFmpeg？
+
+[FFmpeg官网](https://ffmpeg.org/)介绍说：“A complete, cross-platform solution to record, convert and stream audio and video.”
+
+即“一套完整的跨平台解决方案，用于录制、转换和流式传输音频和视频。">
 <meta property="og:type" content="article">
-<meta property="og:url" content="https://blog.auhaijpan.top//post/Markdown-kuo-zhan-yu-fa-su-cha.html">
+<meta property="og:url" content="https://blog.auhaijpan.top//post/FFmpeg%20-shi-yong-zhi-nan-%EF%BC%9A-cong-ru-men-dao-ru-men.html">
 <meta property="og:image" content="https://avatars.githubusercontent.com/u/150444021?v=4">
-<title>Markdown扩展语法速查</title>
-
+<title>FFmpeg 使用指南：从入门到入门</title>
+<link href="//unpkg.com/@wooorm/starry-night@2.1.1/style/both.css" rel="stylesheet" />
 
 
 </head>
@@ -67,7 +69,7 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 
 <body>
     <div id="header">
-<h1 class="postTitle">Markdown扩展语法速查</h1>
+<h1 class="postTitle">FFmpeg 使用指南：从入门到入门</h1>
 <div class="title-right">
     <a href="https://blog.auhaijpan.top/" id="buttonHome" class="btn btn-invisible circle" title="首页">
         <svg class="octicon" width="16" height="16">
@@ -75,7 +77,7 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
         </svg>
     </a>
     
-    <a href="https://github.com/panauhaij/panauhaij.github.io/issues/5" target="_blank" class="btn btn-invisible circle" title="Issue">
+    <a href="https://github.com/panauhaij/panauhaij.github.io/issues/9" target="_blank" class="btn btn-invisible circle" title="Issue">
         <svg class="octicon" width="16" height="16">
             <path id="pathIssue" fill-rule="evenodd"></path>
         </svg>
@@ -91,76 +93,85 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 </div>
 </div>
     <div id="content">
-<div class="markdown-body" id="postBody"><h2>前言</h2>
-<p><a href="https://blog.auhaijpan.top/post/Markdown-ji-ben-yu-fa-su-cha.html" rel="nofollow">Markdown基本语法速查</a></p>
-<h1>表格</h1>
-<p>表格分为表头，分隔行和表体。表头和表体用管道符号 <code class="notranslate">|</code> 分隔每列，用至少一个连字符 <code class="notranslate">-</code> 分隔表头和表体；还可以通过在分隔行中的连字符 <code class="notranslate">-</code> 的左侧，右侧或两侧添加冒号 <code class="notranslate">:</code> 来将列中的文本对齐到左侧，右侧或中心。例如：</p>
-<pre class="notranslate"><code class="notranslate">| 姓名   | 年龄 | 城市   |
-|:-------|:----:|-------:|
-| 小明   | 25   | 北京   |
-| 小红   | 23   | 上海   |
-| 小华   | 20   | 广州   |
-</code></pre>
-<markdown-accessiblity-table><table role="table">
-<thead>
-<tr>
-<th align="left">姓名</th>
-<th align="center">年龄</th>
-<th align="right">城市</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td align="left">小明</td>
-<td align="center">25</td>
-<td align="right">北京</td>
-</tr>
-<tr>
-<td align="left">小红</td>
-<td align="center">23</td>
-<td align="right">上海</td>
-</tr>
-<tr>
-<td align="left">小华</td>
-<td align="center">20</td>
-<td align="right">广州</td>
-</tr>
-</tbody>
-</table></markdown-accessiblity-table>
-<h1>脚注</h1>
-<p>使用方括号 <code class="notranslate">[ ]</code> 和插入符号 <code class="notranslate">^</code> 来添加脚注，同时在文末使用相同的标记添加脚注定义。例如：</p>
-<pre class="notranslate"><code class="notranslate">这是一个带有脚注的句子[^1]。
-[^1]: 这是脚注的详细说明。
-</code></pre>
-<p>这是一个带有脚注的句子<sup><a href="#user-content-fn-1-1db8229533d7014371d0d41a8ba6dcd1" id="user-content-fnref-1-1db8229533d7014371d0d41a8ba6dcd1" data-footnote-ref="" aria-describedby="footnote-label">1</a></sup>。</p>
-<h1>Emoji表情</h1>
-<p>在大多数情况下，可以使用 Unicode 表情符号直接插入到文本中。例如：</p>
-<p>🚀🚀🚀</p>
-<h1>任务列表</h1>
-<p>在任务列表项之前添加破折号 <code class="notranslate">-</code> 和方括号 <code class="notranslate">[ ]</code> ，并在 <code class="notranslate">[ ]</code> 前面加上空格 <code class="notranslate">space</code> 。例如：</p>
-<pre class="notranslate"><code class="notranslate">- [ ] 表示未完成的任务。
-- [x] 表示已完成的任务。
-</code></pre>
-<ul class="contains-task-list">
-<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" aria-label="Incomplete task"> 表示未完成的任务。</li>
-<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" aria-label="Completed task" checked=""> 表示已完成的任务。</li>
-</ul>
-<h1>删除线</h1>
-<p>使用双波浪线 <code class="notranslate">~~</code> 来包围文本。例如：</p>
-<p><code class="notranslate">~~你什么时候放下，什么时候就没有烦恼。~~</code></p>
-<p><del>你什么时候放下，什么时候就没有烦恼。</del></p>
-<h1>标题ID</h1>
-<p>在一些支持的 Markdown 渲染器中，可以在标题后使用 <code class="notranslate">{#id}</code> 来设置标题 ID；例如：</p>
-<p><code class="notranslate">## 标题ID {#heading-id}</code></p>
-<p>然后可以用链接语法链接到自定义的标题ID页面；例如：</p>
-<p><code class="notranslate">[跳转到我的标题](#heading-id) </code></p>
-<section data-footnotes="" class="footnotes"><h2 id="footnote-label" class="sr-only">Footnotes</h2>
+<div class="markdown-body" id="postBody"><h2>引言</h2>
+<h3>什么是FFmpeg？为什么要选FFmpeg？</h3>
+<p><a href="https://ffmpeg.org/" rel="nofollow">FFmpeg官网</a>介绍说：“A complete, cross-platform solution to record, convert and stream audio and video.”</p>
+<p>即“一套完整的跨平台解决方案，用于录制、转换和流式传输音频和视频。”</p>
+<p>通俗来说，FFmpeg 能够录制、转码和推流音视频，支持几乎所有主流的音视频格式和编解码器。虽然录制和推流通常会选择 OBS 等专业工具，但 FFmpeg 的核心优势在于其强大的转码功能。</p>
+<p>为什么选择 FFmpeg？因为它功能强大、灵活免费、开源且使用方便！</p>
+<h3>由来和发展</h3>
+<p>FFmpeg起源于2000年，由法国程序员Fabrice Bellard发起开发，最初目的是创建一个免费的多媒体处理工具。随着时间推移，FFmpeg逐渐发展成为一个功能强大且开源的多媒体框架，支持众多音视频格式的编解码、转换、录制和流式传输。而且其活跃的开源社区不断地贡献代码和新功能，使FFmpeg在多媒体处理领域保持领先地位，广泛应用于视频播放器、直播平台、视频编辑软件等各种场景。其实，格式工厂，暴风影音和QQ影音的转码工具等，都是在FFmpeg上套了一层图形化界面，其本质还是靠FFmpeg来进行转码。</p>
+<h2>下载与安装配置（以WINDOWS为例）</h2>
+<p><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/52c20770e23d9d85d4ea5280949b403bdcbcb5adfe5fe1039c026eaacb636cb8/68747470733a2f2f63646e2e61756861696a70616e2e746f702f77702d636f6e74656e742f75706c6f6164732f2f323032352f30372f66666d7065672d67657474696e672d737461727465642d315f636f6d707265737365642e706e67"><img src="https://camo.githubusercontent.com/52c20770e23d9d85d4ea5280949b403bdcbcb5adfe5fe1039c026eaacb636cb8/68747470733a2f2f63646e2e61756861696a70616e2e746f702f77702d636f6e74656e742f75706c6f6164732f2f323032352f30372f66666d7065672d67657474696e672d737461727465642d315f636f6d707265737365642e706e67" alt="FFmpeg入门指南" data-canonical-src="https://cdn.auhaijpan.top/wp-content/uploads//2025/07/ffmpeg-getting-started-1_compressed.png" style="max-width: 100%;"></a></p>
+<h3>下载解压</h3>
 <ol>
-<li id="user-content-fn-1-1db8229533d7014371d0d41a8ba6dcd1">
-<p>这是脚注的详细说明。 <a href="#user-content-fnref-1-1db8229533d7014371d0d41a8ba6dcd1" data-footnote-backref="" aria-label="Back to reference 1" class="data-footnote-backref">↩</a></p>
-</li>
+<li>打开 <a href="https://ffmpeg.org/" rel="nofollow">FFmpeg 官网</a>，点击“<code class="notranslate">Download</code>”。</li>
+<li>注意不要点击中间的“<code class="notranslate">Download Source Code</code>”，那是源代码。</li>
+<li>在页面左下角找到“<code class="notranslate">Get packages &amp; executable files</code>”，点击进入。</li>
+<li>选择 Windows 版本，推荐下载第一个版本<code class="notranslate">Windows builds from gyan.dev</code>。</li>
+<li>下载完成后，将压缩包解压到任意目录（例如 D 盘）。</li>
 </ol>
-</section></div>
+<h3>配置环境变量</h3>
+<ol>
+<li>找到 FFmpeg 解压后的 <code class="notranslate">bin</code> 文件夹路径（如 <code class="notranslate">D:\ffmpeg-2025-07-01-git-11d1b71c31-full_build\bin</code>）。</li>
+<li>右键“<code class="notranslate">此电脑</code>” → “<code class="notranslate">属性</code>” → “<code class="notranslate">高级系统设置</code>” → “<code class="notranslate">环境变量</code>”。</li>
+<li>在“<code class="notranslate">系统变量</code>”中找到 <code class="notranslate">Path</code>，点击“<code class="notranslate">编辑</code>” → “<code class="notranslate">新建</code>”，添加 FFmpeg 的 <code class="notranslate">bin</code> 路径。</li>
+<li>点击确定保存。</li>
+</ol>
+<h3>验证安装</h3>
+<p>按 <code class="notranslate">Win + R</code>，输入 <code class="notranslate">cmd</code> 或 <code class="notranslate">powershell</code>，回车，输入：</p>
+<div class="highlight highlight-source-shell"><pre class="notranslate">ffmpeg -version</pre></div>
+<p>如果显示版本信息，则说明安装成功。</p>
+<h3>基础操作</h3>
+<p>命令行看起来复杂，但掌握基础命令后其实非常简单。小技巧：可以将文件直接拖入命令行窗口，自动输入文件路径，避免手动输入或复制粘贴。</p>
+<p>FFmpeg 基本命令格式：</p>
+<div class="highlight highlight-source-shell"><pre class="notranslate">ffmpeg [全局选项] -i 输入文件 [输入选项] [输出选项] 输出文件</pre></div>
+<ol>
+<li>全局选项：控制 FFmpeg 整体行为（如日志级别、线程数等）。</li>
+<li>-i 输入文件：指定输入源（文件、设备或流）。</li>
+<li>输入选项：针对输入文件的特殊处理（如截取片段）。</li>
+<li>输出选项：指定转码参数、滤镜、编码器等。</li>
+<li>输出文件：目标文件路径及格式。</li>
+</ol>
+<p>默认情况下，如果你是在 Win + R 里打开的命令行，输出文件会保存到当前用户主目录（如 C:\Users\用户名）。</p>
+<h2>常用例子</h2>
+<p>下面举几个常用的例子：</p>
+<h3>查看文件信息</h3>
+<div class="highlight highlight-source-shell"><pre class="notranslate">ffmpeg -i input.mp4</pre></div>
+<h3>简单转码（直接复制视频和音频流，不重新编码）</h3>
+<div class="highlight highlight-source-shell"><pre class="notranslate">ffmpeg -i input.mp4 -c:v copy -c:a copy output.mkv</pre></div>
+<blockquote>
+<p><strong>注意</strong>：如果输入视频和音频编码格式与目标格式不兼容，或者是需要调整画质、码率以及添加滤镜等，则需要重新编码。</p>
+</blockquote>
+<h3>转换音频格式（WAV 转 AAC）</h3>
+<div class="highlight highlight-source-shell"><pre class="notranslate">ffmpeg -i input.wav output.aac</pre></div>
+<h3>调整分辨率（转换为 1280x720）</h3>
+<div class="highlight highlight-source-shell"><pre class="notranslate">ffmpeg -i input.mp4 -vf <span class="pl-s"><span class="pl-pds">"</span>scale=1280:720<span class="pl-pds">"</span></span> output_720p.mp4</pre></div>
+<h3>压缩视频（调整码率为 1000kbps）</h3>
+<div class="highlight highlight-source-shell"><pre class="notranslate">ffmpeg -i input.mp4 -b:v 1000k output_compressed.mp4</pre></div>
+<h3>提取音频（高质量 MP3）</h3>
+<div class="highlight highlight-source-shell"><pre class="notranslate">ffmpeg -i input.mp4 -q:a 0 -map a output.mp3</pre></div>
+<h3>使用更高效的编码格式 H.265</h3>
+<div class="highlight highlight-source-shell"><pre class="notranslate">ffmpeg -i input.mts -c:v libx265 -crf 28 -preset fast -c:a aac -b:a 192k output.mp4</pre></div>
+<p><strong>参数说明</strong>：</p>
+<ul>
+<li><code class="notranslate">-c:v libx265</code>：视频编码为 H.265</li>
+<li><code class="notranslate">-crf 28</code>：质量控制参数，范围 18-28，数值越小质量越好</li>
+<li><code class="notranslate">-preset fast</code>：编码速度，速度越快压缩率可能越低</li>
+<li><code class="notranslate">-c:a aac -b:a 192k</code>：音频编码为 AAC，码率 192kbps</li>
+</ul>
+<h3>视频转 GIF（前 5 秒，10fps，宽度 320 像素，自动等比缩放）</h3>
+<div class="highlight highlight-source-shell"><pre class="notranslate">ffmpeg -i input.mp4 -vf <span class="pl-s"><span class="pl-pds">"</span>fps=10,scale=320:-1:flags=lanczos<span class="pl-pds">"</span></span> -t 5 output.gif</pre></div>
+<h2>AI 助你！</h2>
+<p>以上是最最最基本的操作，不过也基本满足了日常的转码需求。如果要对音视频进行更细致的修改或执行更复杂的处理，但是又不想费时翻阅官方文档，我们也可以将需求直接喂给AI比如DeepSeek、ChatGPT等，就能快速生成符合要求的FFmpeg命令了。大大提升操作效率，轻松实现各种音视频的处理任务！</p>
+<br>
+<br>
+<br>
+<br>
+<br>
+<h4>相关链接：</h4>
+<p><a href="https://ffmpeg.org/" rel="nofollow">FFmpeg官网</a></p>
+<p><a href="https://ffmpeg.org/ffmpeg.html" rel="nofollow">ffmpeg Documentation</a></p></div>
 <div style="font-size:small;margin-top:8px;float:right;">🚀纵使困顿难行，亦当砥砺奋进🚀</div>
 
 <button class="btn btn-block" type="button" onclick="openComments()" id="cmButton">评论</button>

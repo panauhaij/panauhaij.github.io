@@ -132,7 +132,7 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 <pre class="notranslate"><code class="notranslate">这是一个带有脚注的句子[^1]。
 [^1]: 这是脚注的详细说明。
 </code></pre>
-<p>这是一个带有脚注的句子<sup><a href="#user-content-fn-1-6c152106ce1753b48647d8b684559e51" id="user-content-fnref-1-6c152106ce1753b48647d8b684559e51" data-footnote-ref="" aria-describedby="footnote-label">1</a></sup>。</p>
+<p>这是一个带有脚注的句子<sup><a href="#user-content-fn-1-5aa7e7acb359174398a890f57135252c" id="user-content-fnref-1-5aa7e7acb359174398a890f57135252c" data-footnote-ref="" aria-describedby="footnote-label">1</a></sup>。</p>
 <h1>Emoji表情</h1>
 <p>在大多数情况下，可以使用 Unicode 表情符号直接插入到文本中。例如：</p>
 <p>🚀🚀🚀</p>
@@ -156,8 +156,8 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 <p><code class="notranslate">[跳转到我的标题](#heading-id) </code></p>
 <section data-footnotes="" class="footnotes"><h2 id="footnote-label" class="sr-only">Footnotes</h2>
 <ol>
-<li id="user-content-fn-1-6c152106ce1753b48647d8b684559e51">
-<p>这是脚注的详细说明。 <a href="#user-content-fnref-1-6c152106ce1753b48647d8b684559e51" data-footnote-backref="" aria-label="Back to reference 1" class="data-footnote-backref">↩</a></p>
+<li id="user-content-fn-1-5aa7e7acb359174398a890f57135252c">
+<p>这是脚注的详细说明。 <a href="#user-content-fnref-1-5aa7e7acb359174398a890f57135252c" data-footnote-backref="" aria-label="Back to reference 1" class="data-footnote-backref">↩</a></p>
 </li>
 </ol>
 </section></div>
@@ -180,7 +180,7 @@ if("07/07/2024"!=""){
     var startSite=new Date("07/07/2024");
     var diff=now.getTime()-startSite.getTime();
     var diffDay=Math.floor(diff/(1000*60*60*24));
-    document.getElementById("runday").innerHTML="网站运行"+diffDay+"天"+" • ";
+    document.getElementById("runday").innerHTML="网站运行 "+diffDay+" 天"+" • ";
 }
 </script></div>
 </body>
@@ -225,6 +225,7 @@ document.getElementById("pathIssue").setAttribute("d",IconList["github"]);
 function openComments(){
     cm=document.getElementById("comments");
     cmButton=document.getElementById("cmButton");
+    cmButton.disabled=true;
     cmButton.innerHTML="loading";
     span=document.createElement("span");
     span.setAttribute("class","AnimatedEllipsis");
